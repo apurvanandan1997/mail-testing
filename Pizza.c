@@ -13,7 +13,7 @@ void bin_search(int n,int k,int a[],long int l,long int r){
             t=k+1;
             break;
         }
-        flag-=a[i];//printf("%d$%d&",flag,i);
+        flag-=a[i];
         if(flag<0){
             t++;i--;flag=check;
         }
@@ -41,7 +41,6 @@ int main() {
             scanf("%d",&a[i]);
             sum+=a[i];
         }
-        //printf("?%d?",sum);
         bin_search(n,k,a,0,sum);
     }
     return 0;
