@@ -244,6 +244,18 @@ bool spi_mem_supports_op(struct spi_mem *mem, const struct spi_mem_op *op)
 }
 EXPORT_SYMBOL_GPL(spi_mem_supports_op);
 
+/**
+ * spi_mem_access_start() - Acquire and lock the access of the SPI memory 
+ *                          for the duration of the transaction
+ * @mem: the SPI memory for the operation
+ *
+ * Sets the mutex lock for the SPI controller to avoid deadlock
+ *
+ * This function first flushes the queued SPI operations before 
+ * acquiring the controller.
+ *
+ * Return: 0 in case of success, a negative error code otherwise.
+ */
 static int spi_mem_access_start(struct spi_mem *mem)
 {
 	struct spi_controller *ctlr = mem->spi->controller;
